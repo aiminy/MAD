@@ -11,7 +11,7 @@
 #### field research is typically that a researcher knows how long their plots are and how
 #### wide the field is, w/ the length of the field available to plant varying
 
-
+# This is a test
 # List of checks starting with the primary; assumes you have a primary check
 design.dma<- function(enviro=format(Sys.Date(), "%x"), entries= NULL, nEntries= NULL, chk.names= NULL, nSecChk= NULL, nFieldRows= NULL, nFieldCols= NULL, nRowsPerBlk=NULL, nColsPerBlk=NULL, nChksPerBlk=2,  plot.start=1001, maxPerChks=0.12, fillWithChk=T, minRowBlkDim=2, minColBlkDim=3){
   

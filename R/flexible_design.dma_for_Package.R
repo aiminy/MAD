@@ -11,28 +11,21 @@
 #### field research is typically that a researcher knows how long their plots are and how
 #### wide the field is, w/ the length of the field available to plant varying
 
-# This is a RETEST
 # List of checks starting with the primary; assumes you have a primary check
-design.dma<- function(enviro=format(Sys.Date(), "%x"), entries= NULL, nEntries= NULL, chk.names= NULL, nSecChk= NULL, nFieldRows= NULL, nFieldCols= NULL, nRowsPerBlk=NULL, nColsPerBlk=NULL, nChksPerBlk=2,  plot.start=1001, maxPerChks=0.12, fillWithChk=T, minRowBlkDim=2, minColBlkDim=3){
+design.dma<- function(enviro=format(Sys.Date(), "%x"), entries= NULL, nEntries= NULL, chk.names= NULL, nSecChk= NULL, nFieldRows= NULL, nFieldCols= NULL, nRowsPerBlk=NULL, nColsPerBlk=NULL, nChkPlotsPerBlk=2,  plot.start=1001, maxPerChks=0.12, fillWithChk=T, minRowBlkDim=2, minColBlkDim=3){
   
   ## Define user functions
   #JL Find all integers that are perfect divisors of x
   reduce <- function(x){
-    keep <- c()
+    keep <- NULL
     for(i in 1:x){
       if(x %% i == 0) keep <- c(keep, i)   
     }
     return(keep)
   }
-  #JL Same as reduce but exclude 1 and x.
-  #JL If you are just testing for whether a number is prime, only go to floor(sqrt(x))
-  #JL If function is to test whether prime or not, it should just return TRUE / FALSE
+  #JL Function to test whether x prime or not: it returns TRUE / FALSE
   prime <- function(x){
-    keep <- c()
-    for(i in 2:(x-1)){
-      if(x %% i == 0) keep <- c(keep, i)   
-    }
-    return(keep)
+    return(!any(x %% 2:floor(sqrt(x)) == 0))
   }
   
   
@@ -43,9 +36,9 @@ design.dma<- function(enviro=format(Sys.Date(), "%x"), entries= NULL, nEntries= 
   
   if(is.null(nFieldRows)) stop("Provide the number of rows (sometimes called ranges or beds) (nFieldRows=).")
   
-  if(is.null(prime(nFieldRows))) warning("nFieldRows is a prime number, thus rows will not be blocked.")
+  if(prime(nFieldRows)) warning("nFieldRows is a prime number, thus rows will not be blocked.")
   ## Typically nFieldCols > nFieldRows so it is OK if you don't block rows as long as you have a sufficient number of columns to generate the number of blocks needed
-  if(!is.null(nFieldCols)) if(is.null(prime(nFieldCols)) & (nFieldCols>nFieldRows)) stop("nFieldCols is a prime number and the columns cannot be blocked. Either change the input for/nnFieldCols to a non-prime number or increase the number of nFieldRows")
+  if(!is.null(nFieldCols)) if(prime(nFieldCols) & (nFieldCols>nFieldRows)) stop("nFieldCols is a prime number and the columns cannot be blocked. Either change the input for/nnFieldCols to a non-prime number or increase the number of nFieldRows")
   
   ## Develop other non-input functions parameters
   if(is.null(entries)) entries <- as.matrix(paste("entry", 1:nEntries, sep="_"))
@@ -183,10 +176,10 @@ design.dma<- function(enviro=format(Sys.Date(), "%x"), entries= NULL, nEntries= 
       nFieldCols.tmp3 <- ceiling(totEntries.tmp3/nFieldRows)
       
       checkIfPrime <- prime(nFieldCols.tmp3)
-      if(is.null(checkIfPrime)){
+      if(checkIfPrime){
         nFieldCols.tmp3 <- nFieldCols.tmp3 + 1
         checkIfPrime <- prime(nFieldCols.tmp3)
-      } ; rm(checkIfPrime)
+      }; rm(checkIfPrime)
       
       nBlks.tmp3 <- ceiling(nChks.tmp3/nChksPerBlk)
       
@@ -243,10 +236,10 @@ design.dma<- function(enviro=format(Sys.Date(), "%x"), entries= NULL, nEntries= 
         nFieldCols.tmp3 <- nFieldCols.tmp3 + 1
         
         checkIfPrime <- prime(nFieldCols.tmp3)
-        if(is.null(checkIfPrime)){
+        if(checkIfPrime){
           nFieldCols.tmp3 <- nFieldCols.tmp3 + 1
           checkIfPrime <- prime(nFieldCols.tmp3)
-        } ; rm(checkIfPrime)
+        }; rm(checkIfPrime)
         
         nBlkRows.pool <- reduce(nFieldRows)[-c(1:(minRowBlkDim-1))]
         nBlkCols.pool <- reduce(nFieldCols.tmp3)[-c(1:(minColBlkDim-1))]

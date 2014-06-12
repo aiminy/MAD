@@ -4,7 +4,7 @@
 #cat(" \n** Before using MADIIdgn be sure that there are no files and/or folders in your Working Directory named\nthe same as the character string you plan to designate for 'designID'; they will be overwritten.\n ")
 
 # List of checks starting with the primary; assumes you have a primary check
-design.dma<- function(enviro="Eretz", entries= NULL, num.entries= NULL, chk.names= NULL, num.sec.chk= NULL, num.rows= NULL, num.cols= NULL,  plot.start = 1001, designID=NULL, annoy=T){
+design.dma.0<- function(enviro="Eretz", entries= NULL, num.entries= NULL, chk.names= NULL, num.sec.chk= NULL, num.rows= NULL, num.cols= NULL,  plot.start = 1001, designID=NULL, annoy=T){
   
 #   ## Ensure that no folders/files in WD will be overwritten and then create folder for results
 #   #JL "is.null(designID)==F"  is equivalent to "!is.null(designID)"

@@ -2,14 +2,14 @@
 \alias{design.dma}
 %- Also NEED an '\alis' for EACH other topic documented here.
 \title{
-Generate a moving average experiment design
+Generate a modified augmented experiment design
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
-This function is used to generate a moving average experiment design given an accession list and a check list. 
+This function is used to generate a modified augmentated experiment design given an accession list, and a check list and the number of field 
 }
 \usage{
-design.dma(enviro = "Eretz", entries = NULL, num.entries = NULL, chk.names = NULL, num.sec.chk = NULL, num.rows = NULL, num.cols = NULL, plot.start = 1001, designID = NULL, annoy = T)
+design.dma<- function(enviro=format(Sys.Date(), "\%x"), entries= NULL, nEntries= NULL, chk.names= NULL, nSecChk= NULL, nFieldRows= NULL, nFieldCols= NULL, nRowsPerBlk=NULL, nColsPerBlk=NULL, nChkPlotsPerBlk=2,  plot.start=1001, maxPerChks=0.12, fillWithChk=T, minRowBlkDim=2, minColBlkDim=3)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -21,37 +21,29 @@ Label for experiemnt
 %%     ~~Describe \code{entries} here~~
 Accession list 
 }
-  \item{num.entries}{
+  \item{nEntries}{
 %%     ~~Describe \code{num.entries} here~~
-The number of accession
+The number of accessions
 }
   \item{chk.names}{
 %%     ~~Describe \code{chk.names} here~~
 Check list
 }
-  \item{num.sec.chk}{
+  \item{nSecChk}{
 %%     ~~Describe \code{num.sec.chk} here~~
-
+The number of secondary checks
 }
-  \item{num.rows}{
+  \item{nFieldRows}{
 %%     ~~Describe \code{num.rows} here~~
-Number of rows
+Number of rows in the trial field
 }
-  \item{num.cols}{
+  \item{nFieldCols}{
 %%     ~~Describe \code{num.cols} here~~
-Number of columns
+Number of columns in the trial field
 }
   \item{plot.start}{
 %%     ~~Describe \code{plot.start} here~~
 The start index for plot
-}
-  \item{designID}{
-%%     ~~Describe \code{designID} here~~
-Label for accession
-}
-  \item{annoy}{
-%%     ~~Describe \code{annoy} here~~
-Check if there exists a output directory in the current working directory
 }
 }
 \details{
@@ -83,14 +75,13 @@ Check if there exists a output directory in the current working directory
 ##---- Should be DIRECTLY executable !! ----
 ##-- ==>  Define data, use random,
 ##--	or do  help(data=index)  for the standard data sets.
+#test file
+#simple example to use design.dma
+test.ma.acc.72.pchk.1.schk.3.0<-design.dma(entries=c(seq(1,300,1)),chk.names= c(seq(1,4,1)),nFieldRow=10)
+#test.ma.acc.72.pchk.1.schk.3.0[[2]]
 
-acc=c(paste("Acc",seq(1,330,1),sep="_")) 
-chk=c(paste("chk",seq(1,4,1),sep="_"))
-
-test.ma<-design.dma(entries=acc,chk.names= chk, num.rows=9, num.cols=NULL, num.sec.chk=3, designID="tester1", annoy=T)
-#test.ma[[2]]  
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Moving Average }
+\keyword{Modified Augmentated Design}
 \keyword{Experiment design }% __ONLY ONE__ keyword per line

@@ -1,9 +1,9 @@
 Package: MAD
 Type: Package
-Title: Moving average experiment
+Title: Modified Augmentated Experiment
 Version: 1.0
-Date: 2014-05-17
+Date: 2014-06-05
 Author: Tyler Tiede and Aimin Yan
 Maintainer: Aimin Yan <ay247@cornell.edu>
-Description: This package is to generate a moving average experiemnt design
+Description: This package is to generate a modified augementated experiemnt design
 License:GPL

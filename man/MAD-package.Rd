@@ -6,20 +6,20 @@
 \description{
 %More about what it does (maybe more than one line)
 %~~ DA concise (1-5 lines) description of the package ~~
-This package is used to generate a moving average experiemental design for plant breeding. 
+This package is used to generate a modified augmentated experiemental design for plant breeding. 
 }
 \details{
 \tabular{ll}{
 Package: \tab MAD\cr
 Type: \tab Package\cr
 Version: \tab 1.0\cr
-Date: \tab 2014-05-17\cr
+Date: \tab 2014-06-05\cr
 LiMcense: 
 %What license is it under?
 \tab GPL \cr
 }
 %~~ An overview of how to use the package, including the most important functions ~~
-Curently, this package includes a function design.dma. To use this function, you need to give a accession list and a check list in your experiment. You also need to sed up the number or rows and number of blocks in your design. 
+Curently, this package includes a function design.dma. To use this function, you need to give an accession list, a check list and number of rows of trial field in your experiment. Other parameters could be NULL or user options. 
 }
 \author{
 %Who wrote it#
@@ -34,7 +34,7 @@ Maintainer: Aimin Yan <ay247@cornell.edu>
 %~~ Optionally other standard keywords, one per line, from file KEYWORDS in the R documentation directory ~~
 \keyword{ 
 %package 
-Moving Average Design
+Modified Augmentated Design
 }
 
 \seealso{
@@ -46,11 +46,6 @@ Moving Average Design
 %~~ simple examples of the most important functions ~~
 #test file
 #simple example to use design.dma
-acc=c(paste("Acc",seq(1,330,1),sep="_")) 
-chk=c(paste("chk",seq(1,4,1),sep="_"))
-test.ma<-design.dma(entries=acc,chk.names= chk, num.rows=9, num.cols=NULL, num.sec.chk=3, designID="tester1", annoy=T)
-#test.ma
+test.ma.acc.72.pchk.1.schk.3.0<-design.dma(entries=c(seq(1,300,1)),chk.names= c(seq(1,4,1)),nFieldRow=10)
+#test.ma.acc.72.pchk.1.schk.3.0[[2]]
 }
-
-
-

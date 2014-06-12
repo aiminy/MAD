@@ -461,8 +461,3 @@ design.dma<- function(enviro=format(Sys.Date(), "%x"), entries= NULL, nEntries= 
   return(design.ma)
   
 } ## End of design.dma function
-
-
-
-
-

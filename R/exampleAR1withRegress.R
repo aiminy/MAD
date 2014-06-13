@@ -1,17 +1,24 @@
 #####################
 # This is a simple example of using "AR1withRegress.R"
 #####################
+
+exampleAR1withRegress<- function() {
+
 library(regress)
 library(rrBLUP)
-source("./MADII_layout_function.R")
-source("./ar1WithRegress.R")
+#source("./MADII_layout_function.R")
+#source("./ar1WithRegress.R")
+#source("flexible_design.dma_for_Package.R")
+#source("AR1WithRegress.R")
 
 heritability <- 0.5
 noErrCov <- NULL
 ysErrCov <- NULL
 for (i in 1:10){
   numEntries <- 240
-  dummy <- MADIIdgn(num.entries=numEntries, num.rows=6, num.cols=NULL, num.sec.chk=3, designID="dummyExpt", annoy=F)
+#  dummy <- MADIIdgn(num.entries=numEntries, num.rows=6, num.cols=NULL, num.sec.chk=3, designID="dummyExpt", annoy=F)
+  dummy <- design.dma(num.entries=numEntries, num.rows=6, num.cols=NULL, num.sec.chk=3, designID="dummyExpt", annoy=F)  
+  
   # Simple simulation of genotype and error effects with no spatial covariance of error
   entries <- sort(unique(dummyExpt$Entry)) # Note: if there is a Fill, it will also be given an effect
   entryEffects <- rnorm(length(entries))
@@ -28,3 +35,4 @@ print(colMeans(noErrCov))
 print(colMeans(ysErrCov))
 hist(ysErrCov[,4])
 print(sum(ysErrCov[,3] > noErrCov[,3]))
+}

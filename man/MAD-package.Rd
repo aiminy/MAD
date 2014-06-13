@@ -46,6 +46,6 @@ Modified Augmentated Design
 %~~ simple examples of the most important functions ~~
 #test file
 #simple example to use design.dma
-test.ma.acc.72.pchk.1.schk.3.0<-design.dma(entries=c(seq(1,300,1)),chk.names= c(seq(1,4,1)),nFieldRow=10)
+test.ma.acc.72.pchk.1.schk.3.0<-design.dma(entries=c(seq(1,300,1)),chk.names= c(seq(1,4,1)),nFieldRows=10)
 #test.ma.acc.72.pchk.1.schk.3.0[[2]]
 }

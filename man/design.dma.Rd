@@ -9,7 +9,7 @@ Generate a modified augmented experiment design
 This function is used to generate a modified augmentated experiment design given an accession list, and a check list and the number of field 
 }
 \usage{
-design.dma<- function(enviro=format(Sys.Date(), "\%x"), entries= NULL, nEntries= NULL, chk.names= NULL, nSecChk= NULL, nFieldRows= NULL, nFieldCols= NULL, nRowsPerBlk=NULL, nColsPerBlk=NULL, nChkPlotsPerBlk=2,  plot.start=1001, maxPerChks=0.12, fillWithChk=T, minRowBlkDim=2, minColBlkDim=3)
+design.dma<- function(enviro=format(Sys.Date(), "\%x"), entries= NULL, nEntries= NULL, chk.names= NULL, nSecChk= NULL, nFieldRows= NULL, nFieldCols= NULL, nRowsPerBlk=NULL, nColsPerBlk=NULL, nChksPerBlk=2,plot.start=1001, maxPerChks=0.12, fillWithChk=T, minRowBlkDim=2, minColBlkDim=3)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -77,7 +77,7 @@ The start index for plot
 ##--	or do  help(data=index)  for the standard data sets.
 #test file
 #simple example to use design.dma
-test.ma.acc.72.pchk.1.schk.3.0<-design.dma(entries=c(seq(1,300,1)),chk.names= c(seq(1,4,1)),nFieldRow=10)
+test.ma.acc.72.pchk.1.schk.3.0<-design.dma(entries=c(seq(1,300,1)),chk.names= c(seq(1,4,1)),nFieldRows=10)
 #test.ma.acc.72.pchk.1.schk.3.0[[2]]
 
 }

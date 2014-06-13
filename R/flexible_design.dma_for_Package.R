@@ -12,7 +12,7 @@
 #### wide the field is, w/ the length of the field available to plant varying
 
 # List of checks starting with the primary; assumes you have a primary check
-design.dma<- function(enviro=format(Sys.Date(), "%x"), entries= NULL, nEntries= NULL, chk.names= NULL, nSecChk= NULL, nFieldRows= NULL, nFieldCols= NULL, nRowsPerBlk=NULL, nColsPerBlk=NULL, nChkPlotsPerBlk=2,  plot.start=1001, maxPerChks=0.12, fillWithChk=T, minRowBlkDim=2, minColBlkDim=3){
+design.dma<- function(enviro=format(Sys.Date(), "%x"), entries= NULL, nEntries= NULL, chk.names= NULL, nSecChk= NULL, nFieldRows= NULL, nFieldCols= NULL, nRowsPerBlk=NULL, nColsPerBlk=NULL,nChksPerBlk=2,plot.start=1001, maxPerChks=0.12, fillWithChk=T, minRowBlkDim=2, minColBlkDim=3){
   
   ## Define user functions
   #JL Find all integers that are perfect divisors of x
